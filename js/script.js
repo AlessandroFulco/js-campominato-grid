@@ -16,21 +16,26 @@ const input = prompt('inserisci la difficoltà: facile,media, difficile');
 // salviamo il container di tutte le celle
 const contenitore = document.getElementById('grid');
 
+// stampa in pagina ogni riquadro
 const difficolta = difficult(input);
-
 for(let i = 0; i < difficolta; i++) {
-    createMyElement();
-    
+    const cells = createMyElement();
+    cells.addEventListener('click', function() {
+        cells.classList.add('azzurro');
+    });
 }
 
 
 
+
 // funzionalità del programma
+// genera un numero random
 function getRandomNumMinMax(rangeMin, rangeMax) {
     let result = Math.floor(Math.random() * (rangeMax - rangeMin)) + rangeMin;
     return result;
 }
 
+// crea un elemento in base alla difficoltà scelta
 function createMyElement() {
     const node = document.createElement('div');
     if(difficult(input) == 100) {
@@ -40,14 +45,12 @@ function createMyElement() {
     } else if (difficult(input) == 49) {
         node.classList.add('square', 'hard');
     }
+    node.append(getRandomNumMinMax(1, difficult(input)))
     contenitore.append(node);
     return node;
 }
 
-
-
-
-
+// determina la difficoltà
 function difficult(stringa) {
     let selectDifficult;
     if(stringa == "facile") {
