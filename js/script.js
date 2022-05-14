@@ -16,12 +16,12 @@ const input = prompt('inserisci la difficoltà: facile,media, difficile');
 // salviamo il container di tutte le celle
 const contenitore = document.getElementById('grid');
 
+const difficolta = difficult(input);
 
-
-
-
-
-
+for(let i = 0; i < difficolta; i++) {
+    createMyElement();
+    
+}
 
 
 
@@ -33,9 +33,20 @@ function getRandomNumMinMax(rangeMin, rangeMax) {
 
 function createMyElement() {
     const node = document.createElement('div');
-    node.className = "square";
+    if(difficult(input) == 100) {
+        node.classList.add('square', 'easy');
+    } else if (difficult(input) == 81) {
+        node.classList.add('square', 'medium');
+    } else if (difficult(input) == 49) {
+        node.classList.add('square', 'hard');
+    }
+    contenitore.append(node);
     return node;
 }
+
+
+
+
 
 function difficult(stringa) {
     let selectDifficult;
@@ -48,3 +59,14 @@ function difficult(stringa) {
     }
     return selectDifficult;
 }
+
+
+
+
+
+
+// function createMyElement() {
+//     const node = document.createElement('div');
+//     node.classList.add('square', input);
+//     return node;
+// }
