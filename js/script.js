@@ -20,24 +20,12 @@ const contenitore = document.getElementById('grid');
 
 
 
-function difficult(numero) {
-    let divEl;
-    for (let i = 0; i < numero; i++) {
-        divEl = createMyElement();
-        divEl.className = 'square easy';
-        contenitore.append(divEl);
-        
-    }
-    return divEl;
-}
-difficult(input);
 
 
 
 
 
 // funzionalità del programma
-
 function getRandomNumMinMax(rangeMin, rangeMax) {
     let result = Math.floor(Math.random() * (rangeMax - rangeMin)) + rangeMin;
     return result;
@@ -47,4 +35,16 @@ function createMyElement() {
     const node = document.createElement('div');
     node.className = "square";
     return node;
+}
+
+function difficult(stringa) {
+    let selectDifficult;
+    if(stringa == "facile") {
+        selectDifficult = 100;
+    } else if (stringa == "media") {
+        selectDifficult = 81;
+    } else if (stringa == "difficile") {
+        selectDifficult = 49;
+    }
+    return selectDifficult;
 }
